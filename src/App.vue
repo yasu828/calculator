@@ -55,8 +55,10 @@ export default {
   },
   methods:{
     answerResult(num){
-      if (num != '=') {
-        this.output += num
+      if (num == 'C') {
+        this.output = ''
+      }else if (num != '='){
+        this.output = this.output += num
       }else{
         this.output = this.output.replace(/÷/g, '/');
         this.output = this.output.replace(/×/g, '*');
