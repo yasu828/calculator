@@ -1,53 +1,66 @@
 <template>
-  <div id="app">
-    <div class="answer">
-      {{answer}}
-    </div>
-    <table>
-      <template v-for="(btnRow, y) in btnNumber">
-        <tr :key="y">
-          <template v-for="(btnCell, x) in btnRow">
-              <td
+<div id="app">
+  <table>
+    <template v-for="(btnRow, y) in btnNumber">
+      <tr :key="y">
+        <template v-for="(btnCell, x) in btnRow">
+          <td v-if="btnCell == '' "
               :key="x"
-              v-if="btnCell == '+'"
+              :colspan="btnCell.colspan || 4"
+              >
+            <input type="text" v-model="output" class="answer">
+          </td>
+          <td v-else-if="btnCell == '+'"
+              :key="x"
               :rowspan="btnCell.rowspan || 2"
               class="btnAdd"
               >
-                <button class="btnsize">
-                  {{btnCell}}
-                </button>
-              </td>
-              <td v-else :key="x" class="btn">
-                <button class="btnsize">
-                  {{btnCell}}
-                </button>
-              </td>
-          </template>
-        </tr>
-      </template>
-    </table>
-  </div>
+            <button class="btnsize">
+              {{btnCell}}
+            </button>
+          </td>
+          <td v-else 
+              :key="x" class="btn"
+              :colspan="btnCell.colspan || 1"
+              >
+            <button class="btnsize">
+              {{btnCell}}
+            </button>
+          </td>
+        </template>
+      </tr>
+    </template>
+  </table>
+</div>
 </template>
 
 <script>
 export default {
   name: 'App',
   data(){
-    
-    return{
-      btnNumber:[
+    const btnNumber = [
+        [""],
         ['C', '%', '√', '÷'],
         ['7', '8', '9', '×'],
         ['4', '5', '6', '-'],
         ['1', '2', '3', '+'],
         ['0', '.', '='],
-      ],
+      ]
+    return{
+      btnNumber:btnNumber,
+      output:"仮ANSWER",
     }
   },
 }
 </script>
 
 <style>
+.answer{
+  height: 10vh;
+  width: 97%;
+  background-color: whitesmoke;
+  border: 1px solid rgba(112, 110, 110, 0.66);
+}
 .btn{
   height: 10vh;
   width: 5vw;
