@@ -1,24 +1,11 @@
-# calculator
+# 要件
+- Vue.jsを使って電卓アプリ作成する
+- 最低限レスポンシブデザインにしておくこと
+※スマホサイズで大きな崩れがないように
 
-## Project setup
-```
-npm install
-```
-
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
-
-### Compiles and minifies for production
-```
-npm run build
-```
-
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+# 設計
+- v-forによる各ボタン生成
+- 電卓のレイアウト作成
+- 各ボタンに機能搭載(まずは四則演算)
+- レスポンシブデザイン
+- 電卓のボタン追加(%, √, tax, (), ^)
