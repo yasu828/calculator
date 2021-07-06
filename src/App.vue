@@ -42,4 +42,16 @@ export default {
 </script>
 
 <style>
+.btn{
+  height: 10vh;
+  width: 5vw;
+}
+.btnadd{
+  height: 20vh;
+  width: 5vw;
+}
+.btnsize{
+  height: 100%;
+  width: 100%;
+}
 </style>
