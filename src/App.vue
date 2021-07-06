@@ -1,28 +1,35 @@
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App2"/>
-  </div>
+  <table>
+    <template v-for="(num, y) in number">
+      <tr :key="y">
+        <template v-for="(btnDATA, x) in num">
+          <td :key="x">
+            <button>
+              {{btnDATA}}
+            </button>
+          </td>
+        </template>
+      </tr>
+    </template>
+  </table>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-
 export default {
   name: 'App',
-  components: {
-    HelloWorld
-  }
+  data(){
+    
+    return{
+      number:[
+        ['7', '8', '9'],
+        ['4', '5', '6', '-', '×'],
+        ['1', '2', '3', '+', '÷'],
+        ['C', '0', '.', '='],
+      ]
+    }
+  },
 }
 </script>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
 </style>
