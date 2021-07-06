@@ -1,5 +1,8 @@
 <template>
   <div id="app">
+    <div class="answer">
+      {{answer}}
+    </div>
     <table>
       <template v-for="(btnRow, y) in btnNumber">
         <tr :key="y">
@@ -8,7 +11,7 @@
               :key="x"
               v-if="btnCell == '+'"
               :rowspan="btnCell.rowspan || 2"
-              class="btnadd"
+              class="btnAdd"
               >
                 <button class="btnsize">
                   {{btnCell}}
@@ -49,7 +52,7 @@ export default {
   height: 10vh;
   width: 5vw;
 }
-.btnadd{
+.btnAdd{
   height: 20vh;
   width: 5vw;
 }
