@@ -3,11 +3,21 @@
     <template v-for="(btnRow, y) in btnNumber">
       <tr :key="y">
         <template v-for="(btnCell, x) in btnRow">
-          <td :key="x">
-            <button>
-              {{btnCell}}
-            </button>
-          </td>
+            <td
+            :key="x"
+            v-if="btnCell == '+'"
+            :rowspan="btnCell.rowspan || 2"
+            class="btnadd"
+            >
+              <button class="btnsize">
+                {{btnCell}}
+              </button>
+            </td>
+            <td v-else :key="x" class="btn">
+              <button class="btnsize">
+                {{btnCell}}
+              </button>
+            </td>
         </template>
       </tr>
     </template>
