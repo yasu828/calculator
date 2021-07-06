@@ -15,7 +15,8 @@
               :rowspan="btnCell.rowspan || 2"
               class="btnAdd"
               >
-            <button class="btnsize">
+            <button class="btnsize"
+                    @click="answerResult(btnCell)">
               {{btnCell}}
             </button>
           </td>
@@ -23,7 +24,8 @@
               :key="x" class="btn"
               :colspan="btnCell.colspan || 1"
               >
-            <button class="btnsize">
+            <button class="btnsize"
+                    @click="answerResult(btnCell)">
               {{btnCell}}
             </button>
           </td>
@@ -48,7 +50,18 @@ export default {
       ]
     return{
       btnNumber:btnNumber,
-      output:"仮ANSWER",
+      output:"",
+    }
+  },
+  methods:{
+    answerResult(num){
+      if (!isNaN(num)) {//数字ならば
+        this.output += num
+      }else if (num != '=') {
+        this.output = this.output + num
+      } else {
+        this.output = Function('return ('+this.output+');')();
+      }
     }
   },
 }
