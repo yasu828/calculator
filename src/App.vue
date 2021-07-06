@@ -1,11 +1,11 @@
 <template>
   <table>
-    <template v-for="(num, y) in number">
+    <template v-for="(btnRow, y) in btnNumber">
       <tr :key="y">
-        <template v-for="(btnDATA, x) in num">
+        <template v-for="(btnCell, x) in btnRow">
           <td :key="x">
             <button>
-              {{btnDATA}}
+              {{btnCell}}
             </button>
           </td>
         </template>
@@ -20,7 +20,7 @@ export default {
   data(){
     
     return{
-      number:[
+      btnNumber:[
         ['7', '8', '9'],
         ['4', '5', '6', '-', '×'],
         ['1', '2', '3', '+', '÷'],
