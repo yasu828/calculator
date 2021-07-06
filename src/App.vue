@@ -55,11 +55,11 @@ export default {
   },
   methods:{
     answerResult(num){
-      if (!isNaN(num)) {//数字ならば
+      if (num != '=') {
         this.output += num
-      }else if (num != '=') {
-        this.output = this.output + num
-      } else {
+      }else{
+        this.output = this.output.replace(/÷/g, '/');
+        this.output = this.output.replace(/×/g, '*');
         this.output = Function('return ('+this.output+');')();
       }
     }
