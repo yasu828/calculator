@@ -1,5 +1,12 @@
 <template>
 <div id="app">
+  <div>
+    <ul v-for="(historicalData, i) in history" :key="i">
+      <li>
+        {{test}} = {{historicalData}}
+      </li>
+    </ul>
+  </div>
   <table>
     <template v-for="(btnRow, y) in btnNumber">
       <tr :key="y">
@@ -51,6 +58,8 @@ export default {
     return{
       btnNumber:btnNumber,
       output:"",
+      test:"",
+      history:[],
     }
   },
   methods:{
@@ -60,9 +69,13 @@ export default {
       }else if (num != '='){
         this.output = this.output += num
       }else{
+        this.test = this.output
+        console.log(this.test)
         this.output = this.output.replace(/÷/g, '/');
         this.output = this.output.replace(/×/g, '*');
         this.output = Function('return ('+this.output+');')();
+        this.history.push(this.output)
+        this.output = ""
       }
     }
   },
