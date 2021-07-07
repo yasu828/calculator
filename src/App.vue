@@ -1,5 +1,6 @@
 <template>
 <div id="app">
+  <HistoryList :infor='this.history' @click="allDelete" />
   <table>
     <template v-for="(btnRow, y) in btnNumber">
       <tr :key="y">
@@ -37,8 +38,12 @@
 </template>
 
 <script>
+import HistoryList from './components/HistoryList.vue'
 export default {
   name: 'App',
+  components: {
+    HistoryList,
+  },
   data(){
     const btnNumber = [
         [""],
@@ -51,6 +56,8 @@ export default {
     return{
       btnNumber:btnNumber,
       output:"",
+      item:"",
+      history:[],
     }
   },
   methods:{
@@ -60,16 +67,44 @@ export default {
       }else if (num != '='){
         this.output = this.output += num
       }else{
+        this.item = this.output
         this.output = this.output.replace(/÷/g, '/');
         this.output = this.output.replace(/×/g, '*');
         this.output = Function('return ('+this.output+');')();
+        this.history.push({formula : this.item, answer : this.output})
       }
-    }
+    },
+    allDelete(){
+      this.history = [];
+    },
   },
 }
 </script>
 
 <style>
+#app{
+  margin-top: 10vh;
+  display: flex;
+  justify-content: center;
+}
+
+ul{
+  list-style: none;
+}
+
+.list{
+  height: 66vh;
+  width: 30vw;
+  border: blue solid 1px;
+  font-size: 80%;
+  overflow: scroll
+}
+
+.deleteBtn{
+  background-color: rgba(255, 255, 255, 0.1);
+  color: rgba(255, 0, 0, 0.700);
+}
+
 .answer{
   height: 10vh;
   width: 97%;
