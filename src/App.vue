@@ -64,6 +64,8 @@ export default {
     answerResult(num){
       if (num == 'C') {
         this.output = ''
+      }else if (num == '%'){
+        this.output = this.output / 100
       }else if (num != '='){
         this.output = this.output += num
       }else{
