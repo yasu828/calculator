@@ -1,6 +1,6 @@
 <template>
   <div class="list">
-    <button @click="allDelete()">履歴を全て削除</button>
+    <button @click="allDelete()" class="deleteBtn">履歴を全て削除</button>
     <ul>
       <li v-for="(List, i) in infor" :key="i">
         {{List.formula}} = {{List.answer}}
@@ -16,7 +16,6 @@ export default {
   data(){
 
     return{
-      
     }
   },
   props:{
@@ -35,5 +34,4 @@ export default {
 </script>
 
 <style scoped>
-
 </style>

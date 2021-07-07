@@ -101,8 +101,8 @@ ul{
 }
 
 .deleteBtn{
-  background-color: rgba(255, 255, 255, 0.096);
-  color: red;
+  background-color: rgba(255, 255, 255, 0.1);
+  color: rgba(255, 0, 0, 0.700);
 }
 
 .answer{
