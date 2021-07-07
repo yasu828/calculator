@@ -66,6 +66,8 @@ export default {
         this.output = ''
       }else if (num == '%'){
         this.output = this.output / 100
+      }else if (num == '√'){
+        this.output = Math.sqrt(this.output)
       }else if (num != '='){
         this.output = this.output += num
       }else{
