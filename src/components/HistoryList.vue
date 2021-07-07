@@ -1,5 +1,6 @@
 <template>
   <div class="list">
+    <button @click="allDelete()">履歴を全て削除</button>
     <ul>
       <li v-for="(List, i) in infor" :key="i">
         {{List.formula}} = {{List.answer}}
@@ -25,7 +26,10 @@ export default {
     deleteList(i){
       this.infor.splice(i, 1)
       console.log(i)
-    }
+    },
+    allDelete(){
+      this.$emit("click",this.infor);
+    },
   },
 }
 </script>

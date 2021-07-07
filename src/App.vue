@@ -1,6 +1,6 @@
 <template>
 <div id="app">
-  <HistoryList :infor='this.history'></HistoryList>
+  <HistoryList :infor='this.history' @click="allDelete" />
   <table>
     <template v-for="(btnRow, y) in btnNumber">
       <tr :key="y">
@@ -73,6 +73,9 @@ export default {
         this.output = Function('return ('+this.output+');')();
         this.history.push({formula : this.item, answer : this.output})
       }
+    },
+    allDelete(){
+      this.history = [];
     },
   },
 }
