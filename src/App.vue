@@ -1,15 +1,6 @@
 <template>
 <div id="app">
-  <!-- <div class="list">
-    <ul v-for="(formula, i) in history" :key="i">
-      <li>
-        {{answer}} = {{formula}}
-        <button :key="i" class="deleteBtn" @click="deleteList(i)">削除</button>
-      </li>
-    </ul>
-  </div> -->
-  <HistoryList></HistoryList>
-
+  <HistoryList :infor='this.history'></HistoryList>
   <table>
     <template v-for="(btnRow, y) in btnNumber">
       <tr :key="y">
@@ -47,7 +38,7 @@
 </template>
 
 <script>
-import HistoryList from '.components/HistoryList.vue'
+import HistoryList from './components/HistoryList.vue'
 export default {
   name: 'App',
   components: {
@@ -65,13 +56,8 @@ export default {
     return{
       btnNumber:btnNumber,
       output:"",
-      answer:[],
-      history:[
-         {
-           answer:"",
-           formula:"",
-         }
-      ],
+      item:"",
+      history:[],
     }
   },
   methods:{
@@ -81,16 +67,13 @@ export default {
       }else if (num != '='){
         this.output = this.output += num
       }else{
-        this.history.formula = this.output
+        this.item = this.output
         this.output = this.output.replace(/÷/g, '/');
         this.output = this.output.replace(/×/g, '*');
         this.output = Function('return ('+this.output+');')();
-        this.output = ""
+        this.history.push({formula : this.item, answer : this.output})
       }
     },
-    deleteList(){
-      this.history.splice(this.history.i, 1)
-    }
   },
 }
 </script>

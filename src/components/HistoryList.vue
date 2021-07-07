@@ -1,9 +1,9 @@
 <template>
   <div class="list">
-    <ul v-for="(formula, i) in history" :key="i">
+    <ul v-for="(List, i) in infor" :key="i">
       <li>
-        {{answer}} = {{formula}}
-        <button :key="i" class="deleteBtn" @click="deleteList(i)">削除</button>
+        {{List.formula}} = {{List.answer}}
+        <button :key="i" class="deleteBtn" @click="deleteList()">削除</button>
       </li>
     </ul>
   </div>
@@ -12,10 +12,24 @@
 <script>
 export default {
   name: 'HistoryList',
+  data(){
+
+    return{
+      
+    }
+  },
+  props:{
+    infor:Array,
+  },
+  methods:{
+    deleteList(){
+      this.history.splice(this.history.i, 1)
+    }
+  }
+
 }
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 
 </style>
