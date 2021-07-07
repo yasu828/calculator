@@ -1,12 +1,15 @@
 <template>
 <div id="app">
-  <div class="list">
-    <ul v-for="(historicalData, i) in history" :key="i">
+  <!-- <div class="list">
+    <ul v-for="(formula, i) in history" :key="i">
       <li>
-        {{answer}} = {{historicalData}}
+        {{answer}} = {{formula}}
+        <button :key="i" class="deleteBtn" @click="deleteList(i)">削除</button>
       </li>
     </ul>
-  </div>
+  </div> -->
+  <HistoryList></HistoryList>
+
   <table>
     <template v-for="(btnRow, y) in btnNumber">
       <tr :key="y">
@@ -44,8 +47,12 @@
 </template>
 
 <script>
+import HistoryList from '.components/HistoryList.vue'
 export default {
   name: 'App',
+  components: {
+    HistoryList,
+  },
   data(){
     const btnNumber = [
         [""],
@@ -58,8 +65,13 @@ export default {
     return{
       btnNumber:btnNumber,
       output:"",
-      answer:"",
-      history:[],
+      answer:[],
+      history:[
+         {
+           answer:"",
+           formula:"",
+         }
+      ],
     }
   },
   methods:{
@@ -69,13 +81,15 @@ export default {
       }else if (num != '='){
         this.output = this.output += num
       }else{
-        this.answer = this.output
+        this.history.formula = this.output
         this.output = this.output.replace(/÷/g, '/');
         this.output = this.output.replace(/×/g, '*');
         this.output = Function('return ('+this.output+');')();
-        this.history.push(this.output)
         this.output = ""
       }
+    },
+    deleteList(){
+      this.history.splice(this.history.i, 1)
     }
   },
 }
@@ -87,13 +101,24 @@ export default {
   display: flex;
   justify-content: center;
 }
+
+ul{
+  list-style: none;
+}
+
 .list{
   height: 66vh;
   width: 30vw;
   border: blue solid 1px;
   font-size: 80%;
-  
+  overflow: scroll
 }
+
+.deleteBtn{
+  background-color: rgba(255, 255, 255, 0.096);
+  color: red;
+}
+
 .answer{
   height: 10vh;
   width: 97%;
