@@ -1,9 +1,9 @@
 <template>
 <div id="app">
-  <div>
+  <div class="list">
     <ul v-for="(historicalData, i) in history" :key="i">
       <li>
-        {{test}} = {{historicalData}}
+        {{answer}} = {{historicalData}}
       </li>
     </ul>
   </div>
@@ -58,7 +58,7 @@ export default {
     return{
       btnNumber:btnNumber,
       output:"",
-      test:"",
+      answer:"",
       history:[],
     }
   },
@@ -69,8 +69,7 @@ export default {
       }else if (num != '='){
         this.output = this.output += num
       }else{
-        this.test = this.output
-        console.log(this.test)
+        this.answer = this.output
         this.output = this.output.replace(/÷/g, '/');
         this.output = this.output.replace(/×/g, '*');
         this.output = Function('return ('+this.output+');')();
@@ -83,6 +82,18 @@ export default {
 </script>
 
 <style>
+#app{
+  margin-top: 10vh;
+  display: flex;
+  justify-content: center;
+}
+.list{
+  height: 66vh;
+  width: 30vw;
+  border: blue solid 1px;
+  font-size: 80%;
+  
+}
 .answer{
   height: 10vh;
   width: 97%;
