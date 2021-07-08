@@ -7,9 +7,9 @@
         <template v-for="(btnCell, x) in btnRow">
           <td v-if="btnCell == '' "
               :key="x"
-              :colspan="btnCell.colspan || 4"
+              :colspan="btnCell.colspan || 5"
               >
-            <input type="text" v-model="output" class="answer">
+            <input type="text" v-model="output" class="answer" placeholder="0">
           </td>
           <td v-else-if="btnCell == '+'"
               :key="x"
@@ -47,11 +47,11 @@ export default {
   data(){
     const btnNumber = [
         [""],
-        ['C', '%', '√', '÷'],
-        ['7', '8', '9', '×'],
-        ['4', '5', '6', '-'],
-        ['1', '2', '3', '+'],
-        ['0', '.', '='],
+        ['√', 'C', '(', ')', '÷'],
+        ['%', '7', '8', '9', '×'],
+        ['tax10', '4', '5', '6', '-'],
+        ['tax8', '1', '2', '3', '+'],
+        ['±', '0', '.', '='],
       ]
     return{
       btnNumber:btnNumber,
@@ -66,14 +66,13 @@ export default {
         this.output = ''
       }else if (num == '%'){
         this.output = this.output / 100
-      }else if (num == '√'){
-        this.output = Math.sqrt(this.output)
       }else if (num != '='){
         this.output = this.output += num
       }else{
         this.item = this.output
         this.output = this.output.replace(/÷/g, '/');
         this.output = this.output.replace(/×/g, '*');
+        this.output = this.output.replace(/√(\d+)/g,r=>r.substr(1)**.5);
         this.output = Function('return ('+this.output+');')();
         this.history.push({formula : this.item, answer : this.output})
       }
@@ -111,7 +110,7 @@ ul{
 
 .answer{
   height: 10vh;
-  width: 97%;
+  width: 98%;
   background-color: whitesmoke;
   border: 1px solid rgba(112, 110, 110, 0.66);
 }

@@ -24,7 +24,6 @@ export default {
   methods:{
     deleteList(i){
       this.infor.splice(i, 1)
-      console.log(i)
     },
     allDelete(){
       this.$emit("click",this.infor);
