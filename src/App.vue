@@ -1,50 +1,63 @@
 <template>
-<div id="app">
-  <HistoryList :infor='this.history' @click="allDelete" />
-  <table>
-    <template v-for="(btnRow, y) in btnNumber">
-      <tr :key="y">
-        <template v-for="(btnCell, x) in btnRow">
-          <td v-if="btnCell == '' "
-              :key="x"
-              :colspan="btnCell.colspan || 5"
-              >
-            <input type="text" v-model="output" class="answer" :placeholder="input">
-          </td>
-          <td v-else-if="btnCell == '+'"
-              :key="x"
-              :rowspan="btnCell.rowspan || 2"
-              class="btnAdd"
-              >
-            <button class="btnsize" :class="`${btnCell}`"
-                    @click="answerResult(btnCell)">
-              {{btnCell}}
-            </button>
-          </td>
-          <td v-else 
-              :key="x" class="btn"
-              :colspan="btnCell.colspan || 1"
-              >
-            <button class="btnsize" :class="`${btnCell}`"
-                    @click="answerResult(btnCell)">
-              {{btnCell}}
-            </button>
-          </td>
-        </template>
-      </tr>
-    </template>
-  </table>
-</div>
+  <v-app>
+    <v-main>
+      <v-container>
+        <v-row class="rowPosition">
+          <v-col cols="12" sm="6" md="4" lg="4" class="pa-0">
+            <HistoryList :infor='this.history' @click="allDelete" />
+          </v-col>
+          <v-col cols="12" sm="6" md="4" lg="4" class="pa-0">
+            <table>
+              <template v-for="(btnRow, y) in btnNumber">
+                <tr :key="y">
+                  <template v-for="(btnCell, x) in btnRow">
+                    <td v-if="btnCell == '' "
+                        :key="x"
+                        :colspan="btnCell.colspan || 5"
+                        >
+                      <input type="text" v-model="output" class="answer" :placeholder="input">
+                    </td>
+                    <td v-else-if="btnCell == '+'"
+                        :key="x"
+                        :rowspan="btnCell.rowspan || 2"
+                        class="btnAdd"
+                        >
+                      <button class="btnsize" :class="`${btnCell}`"
+                              @click="answerResult(btnCell)">
+                        {{btnCell}}
+                      </button>
+                    </td>
+                    <td v-else 
+                        :key="x" class="btn"
+                        :colspan="btnCell.colspan || 1"
+                        >
+                      <button class="btnsize" :class="`${btnCell}`"
+                              @click="answerResult(btnCell)">
+                        {{btnCell}}
+                      </button>
+                    </td>
+                  </template>
+                </tr>
+              </template>
+            </table>
+          </v-col>
+        </v-row>
+      </v-container>
+    </v-main>
+  </v-app>
 </template>
 
 <script>
-import HistoryList from './components/HistoryList.vue'
+import HistoryList from './components/HistoryList.vue';
+
 export default {
   name: 'App',
+
   components: {
     HistoryList,
   },
-  data(){
+
+  data: () => {
     const btnNumber = [
         [""],
         ['CA',    '√', '(', ')', '÷'],
@@ -92,8 +105,8 @@ export default {
     },
   },
 }
-</script>
 
+</script>
 <style>
 #app{
   margin-top: 10vh;
@@ -101,26 +114,23 @@ export default {
   justify-content: center;
 }
 
-ul{
-  list-style: none;
-}
-
-.list{
-  height: 66vh;
-  width: 30vw;
-  border: #e9e3df solid 1px;
-  font-size: 80%;
-  overflow: scroll
+.rowPosition{
+  display: flex;
+  justify-content: center;
 }
 
 .deleteBtn{
   background-color: rgba(255, 255, 255, 0.1);
   color: #ffa600;
 }
-
+table{
+  width: 80%;
+  margin: auto;
+}
 .answer{
   height: 10vh;
-  width: 98%;
+  width: 100%;
+  text-align: right;
   background-color: whitesmoke;
   border: 1px solid rgba(112, 110, 110, 0.66);
 }
@@ -135,6 +145,7 @@ ul{
 .btnsize{
   height: 100%;
   width: 100%;
+  border: black solid 0.5px;
 }
 
 .\+, .\-, .×, .÷{
