@@ -9,7 +9,7 @@
               :key="x"
               :colspan="btnCell.colspan || 5"
               >
-            <input type="text" v-model="output" class="answer" placeholder="0">
+            <input type="text" v-model="output" class="answer" :placeholder="input">
           </td>
           <td v-else-if="btnCell == '+'"
               :key="x"
@@ -56,6 +56,7 @@ export default {
     return{
       btnNumber:btnNumber,
       output:"",
+      input:"0",
       item:"",
       history:[],
     }
@@ -81,6 +82,8 @@ export default {
         this.output = this.output.replace(/√(\d+)/g,r=>r.substr(1)**.5);
         this.output = Function('return ('+this.output+');')();
         this.history.push({formula : this.item, answer : this.output})
+        this.input = this.output
+        this.output = ""
       }
     },
     allDelete(){
