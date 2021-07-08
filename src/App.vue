@@ -47,11 +47,11 @@ export default {
   data(){
     const btnNumber = [
         [""],
-        ['√', 'C', '(', ')', '÷'],
-        ['%', '7', '8', '9', '×'],
+        ['C',     '√', '(', ')', '÷'],
+        ['%',     '7', '8', '9', '×'],
         ['tax10', '4', '5', '6', '-'],
-        ['tax8', '1', '2', '3', '+'],
-        ['±', '0', '.', '='],
+        ['tax8',  '1', '2', '3', '+'],
+        ['±',     '0', '.', '='],
       ]
     return{
       btnNumber:btnNumber,
@@ -66,6 +66,10 @@ export default {
         this.output = ''
       }else if (num == '%'){
         this.output = this.output / 100
+      }else if (num == 'tax10'){
+        this.output = this.output * 110 / 100
+      }else if (num == 'tax8'){
+        this.output = this.output * 108 / 100
       }else if (num != '='){
         this.output = this.output += num
       }else{
