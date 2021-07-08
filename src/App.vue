@@ -16,7 +16,7 @@
               :rowspan="btnCell.rowspan || 2"
               class="btnAdd"
               >
-            <button class="btnsize"
+            <button class="btnsize" :class="`${btnCell}`"
                     @click="answerResult(btnCell)">
               {{btnCell}}
             </button>
@@ -25,7 +25,7 @@
               :key="x" class="btn"
               :colspan="btnCell.colspan || 1"
               >
-            <button class="btnsize"
+            <button class="btnsize" :class="`${btnCell}`"
                     @click="answerResult(btnCell)">
               {{btnCell}}
             </button>
@@ -47,7 +47,7 @@ export default {
   data(){
     const btnNumber = [
         [""],
-        ['CA',     '√', '(', ')', '÷'],
+        ['CA',    '√', '(', ')', '÷'],
         ['%',     '7', '8', '9', '×'],
         ['tax10', '4', '5', '6', '-'],
         ['tax8',  '1', '2', '3', '+'],
@@ -108,14 +108,14 @@ ul{
 .list{
   height: 66vh;
   width: 30vw;
-  border: blue solid 1px;
+  border: #e9e3df solid 1px;
   font-size: 80%;
   overflow: scroll
 }
 
 .deleteBtn{
   background-color: rgba(255, 255, 255, 0.1);
-  color: rgba(255, 0, 0, 0.700);
+  color: #ffa600;
 }
 
 .answer{
@@ -135,5 +135,15 @@ ul{
 .btnsize{
   height: 100%;
   width: 100%;
+}
+
+.\+, .\-, .×, .÷{
+  background-color: #c7beb9;
+}
+.\), .\(, .√, .\%, .tax10, .tax8{
+  background-color: #e9e3df;
+}
+.CA, .C, .\={
+  background-color: #ddc9c6;
 }
 </style>
