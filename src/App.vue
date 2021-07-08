@@ -125,14 +125,16 @@ export default {
 }
 table{
   width: 80%;
+  height: 68vh;
   margin: auto;
 }
 .answer{
-  height: 10vh;
+  height: 100%;
   width: 100%;
   text-align: right;
   background-color: whitesmoke;
   border: 1px solid rgba(112, 110, 110, 0.66);
+  font-size: 150% ;
 }
 .btn{
   height: 10vh;

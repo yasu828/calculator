@@ -33,4 +33,16 @@ export default {
 </script>
 
 <style scoped>
+ul{
+  list-style: none;
+}
+
+.list{
+  margin: auto;
+  height: 68vh;
+  width: 80%;
+  border: #e9e3df solid 1px;
+  font-size: 140%;
+  overflow: scroll;
+}
 </style>
