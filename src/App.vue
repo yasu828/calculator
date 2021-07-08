@@ -65,6 +65,7 @@ export default {
     answerResult(num){
       if (num == 'CA') {
         this.output = ''
+        this.input = '0'
       }else if (num == 'C') {
         this.output = this.output.slice(0, -1)
       }else if (num == '%'){
