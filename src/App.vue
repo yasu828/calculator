@@ -103,6 +103,14 @@ export default {
         this.output = this.output * 110 / 100
       }else if (num == 'tax8'){
         this.output = this.output * 108 / 100
+      }else if (num == '(' || num == '√'){
+        const lastNum = this.output.slice(-1)
+        console.log(lastNum)
+        if (!isNaN(lastNum)) {
+          this.output = this.output + '×' + num
+        }else if (lastNum == '-') {
+          this.output = this.output + num          
+        }
       }else if (num != '='){
         this.output = this.output += num
       }else{
