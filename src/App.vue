@@ -97,22 +97,21 @@ export default {
       }else if (num == 'C') {
         this.output = this.output.slice(0, -1)
         this.check = false
-      }else if (num == '%'){
+      }else if (num == '%') {
         this.output = this.output / 100
-      }else if (num == 'tax10'){
+      }else if (num == 'tax10') {
         this.output = this.output * 110 / 100
-      }else if (num == 'tax8'){
+      }else if (num == 'tax8') {
         this.output = this.output * 108 / 100
-      }else if (num == '(' || num == '√'){
+      }else if (num == '(' || num == '√') {
         const lastNum = this.output.slice(-1)
-        console.log(lastNum)
         if (!isNaN(lastNum)) {
-          this.output = this.output + '×' + num
+          this.output += '×' + num
         }else if (lastNum == '-') {
-          this.output = this.output + num          
+          this.output += num          
         }
-      }else if (num != '='){
-        this.output = this.output += num
+      }else if (num != '=') {
+        this.output +=  num
       }else{
         this.item = this.output
         this.output = this.output.replace(/÷/g, '/');
