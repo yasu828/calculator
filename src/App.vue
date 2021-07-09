@@ -93,8 +93,10 @@ export default {
       if (num == 'CA') {
         this.output = ''
         this.input = '0'
+        this.check = false
       }else if (num == 'C') {
         this.output = this.output.slice(0, -1)
+        this.check = false
       }else if (num == '%'){
         this.output = this.output / 100
       }else if (num == 'tax10'){
