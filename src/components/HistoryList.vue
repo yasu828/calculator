@@ -42,7 +42,7 @@ ul{
   height: 68vh;
   width: 80%;
   border: #e9e3df solid 1px;
-  font-size: 140%;
+  font-size: 100%;
   overflow: scroll;
 }
 </style>
