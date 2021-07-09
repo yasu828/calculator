@@ -1,8 +1,6 @@
 <template>
   <v-app>
-    <v-app-bar>
-      <Header/>
-    </v-app-bar>
+    <Header/>
     <v-main>
       <v-container>
         <v-row class="rowPosition">
