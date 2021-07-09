@@ -15,7 +15,13 @@
                         :key="x"
                         :colspan="btnCell.colspan || 5"
                         >
-                      <input type="text" v-model="output" class="answer" :placeholder="input">
+                      <input type="text"
+                             v-model="output"
+                             class="answer"
+                            :placeholder="input"
+                            @input="checkForm"
+                            :disabled="check"
+                            >
                     </td>
                     <td v-else-if="btnCell == '+'"
                         :key="x"
@@ -72,9 +78,17 @@ export default {
       input:"0",
       item:"",
       history:[],
+      check:false,
     }
   },
   methods:{
+    checkForm(e){
+      const inputItem = this.btnNumber.join('')
+      const result = inputItem.includes(e.data)
+      if (!result) {
+        this.check = true
+      }
+    },
     answerResult(num){
       if (num == 'CA') {
         this.output = ''
