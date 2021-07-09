@@ -1,5 +1,8 @@
 <template>
   <v-app>
+    <v-app-bar>
+      <Header/>
+    </v-app-bar>
     <v-main>
       <v-container>
         <v-row class="rowPosition">
@@ -55,12 +58,14 @@
 
 <script>
 import HistoryList from './components/HistoryList.vue';
+import Header from './components/Header.vue';
 
 export default {
   name: 'App',
 
   components: {
     HistoryList,
+    Header,
   },
 
   data: () => {
